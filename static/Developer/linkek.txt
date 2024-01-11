@@ -1,0 +1,14 @@
+https://hu.wikipedia.org/wiki/Visszal%C3%A9p%C3%A9ses_keres%C3%A9s
+
+E-K diagram (egyed-kapcsolat):
+https://inf.u-szeged.hu/~gnemeth/adatbgyak/exe/EK_diagram/az_egyedkapcsolat_diagram_elemei.html
+
+
+
+
+
+
+
+
+
+

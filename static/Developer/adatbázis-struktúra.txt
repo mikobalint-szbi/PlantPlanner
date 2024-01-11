@@ -1,0 +1,29 @@
+
+plants:
+- id
+- name_hun
+- name_lat
+- type
+- rowDistance
+- plantDistance
+- color
+- picture
+- description
+
+like:
+- plant1
+- plant2
+
+dislike:
+- plant1
+- plant2
+
+
+
+
+
+
+
+
+
+
