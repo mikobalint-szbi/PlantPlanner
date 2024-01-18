@@ -3,18 +3,13 @@
 </script>
 
 <div class="plantBox">
-    <Plant/>
-    <Plant/>
-    <Plant/>
-    <Plant/>
-    <Plant/>
-    <Plant/>
-    <Plant/>
-    <Plant/>
-    <Plant/>
-    <Plant/>
-    <Plant/>
-    <Plant/>
+    {#each Array(20) as _ }
+        <div class="plant">
+            <Plant/>
+        </div>
+
+    {/each}
+
 
 </div>
 
@@ -24,11 +19,14 @@
         display: flex;
         flex-direction: column;
         width: fit-content;
-        height: 100vh;
-        overflow-y: scroll;
+        height: 100vh !important;
+        overflow-y: auto;
     }
 
-
+    .plant{
+        width: 300px !important;
+        height: 80px !important;
+    }
 
 </style>
 
