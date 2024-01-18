@@ -1,0 +1,36 @@
+
+Kezdőlap tartalma:
+- Új ágyás létrehozása
+- import, export
+- Ágyások listája, kb mint a Figma csak nagyobb
+
+
+Megbeszélt irányelvek:
+======================
+
+- Soronként kezeli az algoritmus a lerakásokat; a sor tulajdonságai:
+    • A sor tartalma: melyik növényből hány db váltakozik a sorban; értéke lehet pl: „5 bab, 12 paradicsom, 8 kukorica” (tehát nem kell, hogy ugyanannyi db legyen az elemekből. Ha elfogy a bab, akkor csak a kukorica és a paradicsom váltakozik, majd a sor végére csak paradicsom marad)
+    • A sor (vízszintes) szélessége margóval együtt
+	• A sor (függőleges) hosszúsága margóval együtt (a margó az utolsó növény tőtávolsága)
+	• Pozíciója: hányadik ágyáson van, és a bal felső sarka hol helyezkedik el az adott ágyás koordinátarendszerében
+	
+- Az exportált, fájlként letárolt adatstruktúrában az egyes vetésterveket soronként tároljuk le az egyel fentebb említett tulajdonságok használatával
+
+- Az éppen terítéken, használatban lévő földeket a memóriában Kétdimenziós tömbben tároljuk el, melynek minden egyes cellája egy négyzetcentimétert képvisel, jellege pedig Number típusú egész szám. A letárolt számok a következőképpen értelmezendőek:
+    • -1 → margók
+	•  0 → semmi, felhasználható földterület
+	•  pozitív szám → Annak a növénynek az azonosítója, amelynek töve, középpontja az adott négyzetcentiméterben helyezkedik el
+
+- Az egyes töveknek csak a középpontját tároljuk. A grafikai megjelenítő függvényünk ezeket a középpontokat felhasználva fog köröket létrehozni a canvason.
+
+- Az algoritmusunk működése:
+    • Kiválasztja az ültetni kívánt növények fix sorrendű listájának első elemét, megnézi, mely másik növényeket szereti az ültetni kívántak listájájából, azokat is kiválasztja, és létrehoz egy sort, amely az kiválasztott növényeket ciklikusan felváltva tartalmazza. Ha időközben az egyik növény elfogy, nem kell belőle többet lerakni, akkor csak a többit teszegeti le váltakozva.
+	• Miután sikeresen lerakta az előző sort, megnézi, hogy az előzőleg lerakott sor mellé melyik növények illenek a legjobban az ültetni kívánt növények listájából (növények, amik szeretik egymást), és azokból rakja mellé a következő sort.
+	    1. Ha van olyan növény, amelyik szereti az előző sor elemeit, akkor azokból rakja az új sort
+		2. Ha nincs ilyen növény, viszont helyette van olyan, amik semlegesen viszonyulnak az előző sorhoz, akkor azokat teszi mellé
+		3. Ha olyan sincs, akkor muszáj az előző sort utáló növényeket lerakosgatni, viszont ekkor a lehető legtávolabb teszi őket az előző sortól. Ha muszáj a sor mellé tenni, akkor egy általunk előre megszabott szélességű földterületet kihagy a két sor között, amennyiben erre van lehetősége.
+		
+	
+
+
+
