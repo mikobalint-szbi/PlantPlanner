@@ -1,9 +1,11 @@
-
+<script lang="ts">
+    import PlantBox from "../../lib/PlantBox.svelte";
+</script>
 
 
 <section class="body">
 
-
+    <PlantBox/>
 
     <canvas class="field" />
 
