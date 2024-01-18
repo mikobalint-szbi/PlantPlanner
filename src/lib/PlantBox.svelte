@@ -21,6 +21,7 @@
         width: fit-content;
         height: 100vh !important;
         overflow-y: auto;
+        overflow-x: hidden;
     }
 
     .plant{
