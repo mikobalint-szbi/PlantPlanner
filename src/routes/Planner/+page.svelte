@@ -10,6 +10,9 @@
     </div>
     <div class="col2">
         <canvas class="field"/>
+        <canvas class="field"/>
+        <canvas class="field"/>
+        <canvas class="field"/>
     </div>
 
 </section>
@@ -29,7 +32,13 @@
         }
 
         .col2{
-
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            white-space: nowrap;
+            overflow-x: auto;
+            gap: 10px;
+            padding: 0 20px 0 20px;
         }
     }
 
