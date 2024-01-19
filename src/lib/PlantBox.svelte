@@ -10,8 +10,8 @@
             <img src="" alt="">
         </div>
         <div class="col2">
-            <h3>Növény neve</h3>
-            <p>Növény latin neve</p>
+            <h3>Faj neve</h3>
+            <p>Faj latin neve</p>
         </div>
     </div>
 
@@ -22,7 +22,6 @@
 
 <style lang="scss">
     .plantBox{
-        border: 1px solid black;
         display: flex;
         flex-direction: column;
         width: fit-content;
