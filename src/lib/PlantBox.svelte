@@ -1,5 +1,9 @@
 <script lang="ts">
-    import Plant from "./Plant.svelte";
+
+// import database from "$env/src/stores/database.js"
+
+    
+
 </script>
 
 <div class="plantBox">

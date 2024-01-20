@@ -1,4 +1,13 @@
 
+Ötletek:
+========
+
+- A projekt-manager főoldalon egy földterv indexképe lehetne pl az összes benne lévő növény képe egymás mellé és alá elhelyezgetve
+
+
+
+----------------------------------------------
+
 Kezdőlap tartalma:
 - Új ágyás létrehozása
 - import, export
