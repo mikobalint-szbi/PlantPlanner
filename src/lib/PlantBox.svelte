@@ -1,6 +1,6 @@
 <script lang="ts">
 
-// import database from "$env/src/stores/database.js"
+// import jsonData from "../stores/database.js"
 
     
 
