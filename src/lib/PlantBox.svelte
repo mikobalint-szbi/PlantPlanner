@@ -1,8 +1,8 @@
 <script lang="ts">
 
-// import jsonData from "../stores/database.js"
+import { database } from "../stores/database.js"
 
-    
+
 
 </script>
 
