@@ -1,6 +1,6 @@
 <script lang="ts">
 
-import { database } from "../stores/database.js"
+import { database } from "$lib/stores/database.js"
 
 
 
