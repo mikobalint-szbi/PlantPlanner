@@ -1,5 +1,5 @@
 <script lang="ts">
-    import PlantBox from "../../lib/PlantBox.svelte";
+    import PlantBox from "$lib/PlantBox.svelte";
 </script>
 
 

@@ -2,20 +2,18 @@
 
 import { database } from "$lib/stores/database.js"
 
-
-
 </script>
 
 <div class="plantBox">
-    {#each Array(20) as _ }
+    {#each database.species as element}
 
     <div class="plant">
         <div class="col1">
             <img src="" alt="">
         </div>
         <div class="col2">
-            <h3>Faj neve</h3>
-            <p>Faj latin neve</p>
+            <h3>{element.name_hun}</h3>
+            <p>{element.name_lat}</p>
         </div>
     </div>
 
