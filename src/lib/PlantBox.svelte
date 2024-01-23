@@ -1,6 +1,6 @@
 <script lang="ts">
 
-import { database } from "$lib/stores/database.js"
+import { database } from "$lib/stores/database.js";
 
 </script>
 
@@ -9,7 +9,7 @@ import { database } from "$lib/stores/database.js"
 
     <div class="plant">
         <div class="col1">
-            <img src="" alt="">
+            <img src="{`/Database/IMG/Species/${String(element.id).padStart(2, '0')}.jpg`}" alt="{element.name_hun}">
         </div>
         <div class="col2">
             <h3>{element.name_hun}</h3>

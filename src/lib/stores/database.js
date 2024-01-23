@@ -10,6 +10,7 @@ const loadItems = async () => {
   try {
     database = JSON.parse(database);
     console.log(database)
+    saveDatabase();
   }
   catch (error) {
     console.error('Error parsing JSON:', error);

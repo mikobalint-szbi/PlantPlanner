@@ -24,7 +24,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"sql.js": "^1.10.1",
-		"sqlite3": "^5.1.7"
+		"sql.js": "^1.10.1"
 	}
 }
