@@ -4,7 +4,7 @@ export let database;
 let items = [];
 
 export const loadItems = async () => {
-    const response = await fetch('/Database/database.json');
+  const response = await fetch('/Database/database.json');
   database = await response.text();
 
   try {
@@ -15,7 +15,7 @@ export const loadItems = async () => {
   catch (error) {
     console.error('Error parsing JSON:', error);
   }
-    
+  return database
 };
 
 export function saveDatabase(){

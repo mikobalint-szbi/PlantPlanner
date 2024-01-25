@@ -2,14 +2,17 @@
 
 import { database } from "$lib/stores/database.js";
 import { loadItems } from "$lib/stores/database.js";
-    import { onMount } from "svelte";
 
-onMount(loadItems)
+
+
+const promise = loadItems()
 
 
 </script>
 
 <div class="plantBox">
+	{#await promise}
+    {:then database}
     {#each database.species as element}
 
     <div class="plant">
@@ -25,9 +28,11 @@ onMount(loadItems)
     </div>
 
     {/each}
+    {/await}
 
 
 </div>
+
 
 <style lang="scss">
     .plantBox{
