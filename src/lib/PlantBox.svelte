@@ -1,6 +1,11 @@
 <script lang="ts">
 
 import { database } from "$lib/stores/database.js";
+import { loadItems } from "$lib/stores/database.js";
+    import { onMount } from "svelte";
+
+onMount(loadItems)
+
 
 </script>
 
@@ -15,6 +20,8 @@ import { database } from "$lib/stores/database.js";
             <h3>{element.name_hun}</h3>
             <p>{element.name_lat}</p>
         </div>
+
+        
     </div>
 
     {/each}

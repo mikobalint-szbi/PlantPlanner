@@ -1,5 +1,6 @@
 <script>
     import "./global.css";
+
 </script>
 
 <div class="app">

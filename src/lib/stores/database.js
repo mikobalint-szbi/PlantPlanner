@@ -3,7 +3,7 @@
 export let database;
 let items = [];
 
-const loadItems = async () => {
+export const loadItems = async () => {
     const response = await fetch('/Database/database.json');
   database = await response.text();
 
@@ -21,8 +21,5 @@ const loadItems = async () => {
 export function saveDatabase(){
   localStorage.setItem("database",JSON.stringify(database));
 }
-
-loadItems();
-
 
 
