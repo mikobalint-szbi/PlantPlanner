@@ -20,8 +20,8 @@
 <style lang="scss">
     .field{
         border: 1px solid black;
-        width: 500px;
-        height: 650px;
+        height: 80vh;
+        width: 63vh;
     }
 
     .body{
