@@ -1,21 +1,21 @@
 {
 
 "species": [
-{"id":1, "name_hun": "bab", "name_lat": "Phaseolus vulgaris" },
-{"id":2,  "name_hun": "bazsalikom", "name_lat": "Ocimum basilicum" },
-{"id":3,  "name_hun": "fokhagyma", "name_lat": "Allium sativum" },
-{"id":4,  "name_hun": "hagyma", "name_lat": "Allium cepa" },
-{"id":5,  "name_hun": "paprika", "name_lat": "Capsicum" },
-{"id":6,  "name_hun": "kukorica", "name_lat": "Zea mays" },
-{"id":7,  "name_hun": "uborka", "name_lat": "Cucumis sativus" },
-{"id":8,  "name_hun": "ánizs", "name_lat": "Pimpinella anisum" },
-{"id":9,  "name_hun": "sárgarépa", "name_lat": "Daucus carota subsp. sativus" },
-{"id":10,  "name_hun": "borsó", "name_lat": "Pisum sativum" },
-{"id":11,  "name_hun": "burgonya", "name_lat": "Solanum tuberosum" },
-{"id":12,  "name_hun": "paradicsom", "name_lat": "Solanum lycopersicum" },
-{"id":13,  "name_hun": "retek", "name_lat": "Raphanus sativus" },
-{"id":14,  "name_hun": "cékla", "name_lat": "Beta vulgaris L. ssp. esculenta Gurke var. rubra" },
-{"id":15,  "name_hun": "karalábé", "name_lat": "B. o. convar. acephala var. gongylodes " }
+{"id":1, "name_hun": "Bab", "name_lat": "Phaseolus vulgaris" },
+{"id":2,  "name_hun": "Bazsalikom", "name_lat": "Ocimum basilicum" },
+{"id":3,  "name_hun": "Fokhagyma", "name_lat": "Allium sativum" },
+{"id":4,  "name_hun": "Hagyma", "name_lat": "Allium cepa" },
+{"id":5,  "name_hun": "Paprika", "name_lat": "Capsicum" },
+{"id":6,  "name_hun": "Kukorica", "name_lat": "Zea mays" },
+{"id":7,  "name_hun": "Uborka", "name_lat": "Cucumis sativus" },
+{"id":8,  "name_hun": "Ánizs", "name_lat": "Pimpinella anisum" },
+{"id":9,  "name_hun": "Sárgarépa", "name_lat": "Daucus carota subsp. sativus" },
+{"id":10,  "name_hun": "Borsó", "name_lat": "Pisum sativum" },
+{"id":11,  "name_hun": "Burgonya", "name_lat": "Solanum tuberosum" },
+{"id":12,  "name_hun": "Paradicsom", "name_lat": "Solanum lycopersicum" },
+{"id":13,  "name_hun": "Retek", "name_lat": "Raphanus sativus" },
+{"id":14,  "name_hun": "Cékla", "name_lat": "Beta vulgaris L. ssp. esculenta Gurke var. rubra" },
+{"id":15,  "name_hun": "Karalábé", "name_lat": "B. o. convar. acephala var. gongylodes " }
 ],
 
 "subspecies": [
