@@ -6,9 +6,14 @@ function openPlant(id: string){
 
     let plant = document.getElementById(id)
     let row2 = plant.querySelector('.row2');
+    let row1 = plant?.querySelector('.row1')
+    let color = "rgb(212, 164, 115)"
     
     row2.style.display = "flex";
     plant.style.height = "fit-content"
+    row1.style.backgroundColor = color
+    row2.style.backgroundColor = color
+    row.style.boxShadow = "inset 1px 1px 1px"
 
 
 }
@@ -94,8 +99,8 @@ const promise = loadItems()
 
 <style lang="scss">
 
-    $speciesColor: rgb(209, 167, 125);
-    $subSpeciesColor: rgb(201, 165, 124);
+    $speciesColor: rgb(234, 192, 150);
+    $subSpeciesColor: rgb(224, 185, 145);
 
     .plantBox{
         display: flex;
@@ -155,12 +160,12 @@ const promise = loadItems()
             background-color: $subSpeciesColor;
             margin-left: auto;
             margin-right: auto;
-            width: 290px !important;
+            width: 292px !important;
             
         }
         .subSpecies{
             border: 1px solid rgb(120, 75, 16);
-            box-shadow: 0.5px 0.5px 2px;
+            box-shadow: 0.5px 0.5px 2px; 
         }
 
         .plantDetails{
@@ -186,7 +191,7 @@ const promise = loadItems()
         .row2{
             display: none;
             flex-direction: column;
-            padding: 3px 0 10px 0;
+            padding: 7px 0 12px 0;
             gap: 6px;
             background-color: $speciesColor;
         }
@@ -220,7 +225,7 @@ const promise = loadItems()
                     background-color: rgb(221, 202, 178);
                 }
                 button{
-                    background-color: rgb(209, 184, 131);
+                    background-color: rgb(224, 200, 134);
                 }
             }
         }
