@@ -26,7 +26,6 @@ function getSubspecies(id: string){
 
     });
     // @ts-ignore
-    console.log(subelements)
     return subelements;
 }
 
@@ -58,7 +57,7 @@ const promise = loadItems()
 
         <div class="row2">
             {#each getSubspecies("plant" + element.id) as subelement}
-            <div class="row1 indent1">
+            <div class="row1 indent1 subSpecies">
 
                 <div class="col1">
                     <div class="imgBox">
@@ -74,8 +73,8 @@ const promise = loadItems()
                     
                 </div>
             </div>
-            <div class="plantDetails indent1">
-                <p style="display: none;">
+            <div class="plantDetails indent1" style="display: none;">
+                <p>
                     <!--{subelement.description}-->
                     Tőtáv: {subelement.plantDistance} cm <br> Sortáv: {subelement.rowDistance} cm
                 </p>
@@ -94,6 +93,10 @@ const promise = loadItems()
 
 
 <style lang="scss">
+
+    $speciesColor: rgb(209, 167, 125);
+    $subSpeciesColor: rgb(201, 165, 124);
+
     .plantBox{
         display: flex;
         flex-direction: column;
@@ -132,13 +135,12 @@ const promise = loadItems()
 
         display: flex;
         flex-direction: column;
+        border: 0.5px solid black;
 
         .row1{
             width: 320px !important;
             height: 70px !important;
-            border: 0.5px solid black;
             display: flex;
-
 
             :hover{
                 cursor: pointer !important;
@@ -146,7 +148,19 @@ const promise = loadItems()
         }
 
         .row1, .plantDetails{
-            background-color: rgb(209, 179, 139);
+            background-color: $speciesColor;
+        }
+
+        .indent1{
+            background-color: $subSpeciesColor;
+            margin-left: auto;
+            margin-right: auto;
+            width: 290px !important;
+            
+        }
+        .subSpecies{
+            border: 1px solid rgb(120, 75, 16);
+            box-shadow: 0.5px 0.5px 2px;
         }
 
         .plantDetails{
@@ -161,17 +175,20 @@ const promise = loadItems()
                 margin: 10px;
             }
 
+            // Amit el kellene érnem:
+            //    - egyszerre csak egy species lehet nyitva
+            //    - ha kinyitod, megváltozik az adott species színe
+            //    - a subspeciesek színei a default többi species színével egyeznek
 
-        }
 
-        .indent1{
-            margin-left: 40px;
-            width: 280px !important;
         }
   
         .row2{
             display: none;
             flex-direction: column;
+            padding: 3px 0 10px 0;
+            gap: 6px;
+            background-color: $speciesColor;
         }
 
 
@@ -189,14 +206,21 @@ const promise = loadItems()
             width: 100%;
 
             .addRow{
+                padding-top: 10px;
+                padding-right: 10px;
                 height: 40px;
                 display: flex;
-                justify-content: center;
+                justify-content: right;
                 align-items: center;
-                gap: 3px;
+                gap: 2.5px;
+
 
                 input{
-                    width: 100px;
+                    width: 55px;
+                    background-color: rgb(221, 202, 178);
+                }
+                button{
+                    background-color: rgb(209, 184, 131);
                 }
             }
         }
