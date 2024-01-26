@@ -20,12 +20,13 @@ function getSubelements(id: string){
 
     // @ts-ignore
     database.subspecies.forEach(subspecie => {
-        if (subspecie.id = dbID){
+        if (subspecie.speciesID == dbID){
             subelements.push(subspecie)
         }
 
     });
     // @ts-ignore
+    console.log(subelements)
     return subelements;
 }
 
@@ -45,7 +46,9 @@ const promise = loadItems()
 
         <div class="row1">
             <div class="col1">
-                <img src="{`/Database/IMG/Species/${String(element.id).padStart(2, '0')}.jpg`}" alt="{element.name_hun}">
+                <div class="imgBox">
+                    <img src="{`/Database/IMG/Species/${String(element.id).padStart(2, '0')}.jpg`}" alt="{element.name_hun}">
+                </div>
             </div>
             <div class="col2">
                 <h3>{element.name_hun}</h3>
@@ -58,11 +61,13 @@ const promise = loadItems()
             <div class="row1 indent1">
 
                 <div class="col1">
-                    <img src="{`/Database/IMG/Subspecies/${String(subelement.id).padStart(2, '0')}.jpg`}" alt="{subelement.name_hun}">
+                    <div class="imgBox">
+                        <img src="{`/Database/IMG/Subspecies/${String(subelement.id).padStart(2, '0')}.jpg`}" alt="{subelement.name_hun}">
+                    </div>
                 </div>
                 <div class="col2">
                     <h3>{subelement.name_hun}</h3>
-                    <p>{subelement.name_lat}</p>
+                    <p>Tőtáv: {subelement.plantDistance} cm <br> Sortáv: {subelement.rowDistance} cm</p>
                 </div>
             </div>
             {/each}
@@ -88,11 +93,24 @@ const promise = loadItems()
 
 
 
-    img{
-        height: 60px;
-        width: 60px;
-        object-fit: cover;
+
+
+    .imgBox{
+        height: 70px;
+        width: 70px !important;
+        display: flex;
+        align-self: center;
+        margin-left: 4px;
+
+        img{
+
+            object-fit: cover;
+            width: 60px;
+            height: 60px;
+            border: 1px solid black;
+            align-self: center;
         
+        }
     }
 
     .plant{
@@ -125,7 +143,7 @@ const promise = loadItems()
         .col1{
             display: flex;
             align-items: center;
-            width: 60px;
+            width: 70px;
         }
         .col2{
             display: flex;
