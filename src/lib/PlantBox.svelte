@@ -13,7 +13,7 @@ function openPlant(id: string){
 
 }
 
-function getSubelements(id: string){
+function getSubspecies(id: string){
     // @ts-ignore
     let subelements = []
     let dbID = id.replace("plant","")
@@ -57,7 +57,7 @@ const promise = loadItems()
         </div>
 
         <div class="row2">
-            {#each getSubelements("plant" + element.id) as subelement}
+            {#each getSubspecies("plant" + element.id) as subelement}
             <div class="row1 indent1">
 
                 <div class="col1">
@@ -67,8 +67,20 @@ const promise = loadItems()
                 </div>
                 <div class="col2">
                     <h3>{subelement.name_hun}</h3>
-                    <p>Tőtáv: {subelement.plantDistance} cm <br> Sortáv: {subelement.rowDistance} cm</p>
+                    <div class="addRow">
+                        <input type="number" value="10">
+                        <button>Letesz</button>
+                    </div>
+                    
                 </div>
+            </div>
+            <div class="plantDetails indent1">
+                <p style="display: none;">
+                    <!--{subelement.description}-->
+                    Tőtáv: {subelement.plantDistance} cm <br> Sortáv: {subelement.rowDistance} cm
+                </p>
+
+
             </div>
             {/each}
         </div>
@@ -89,6 +101,8 @@ const promise = loadItems()
         height: 100vh !important;
         overflow-y: auto;
         overflow-x: hidden;
+
+        background-color: rgb(231, 205, 148);
     }
 
 
@@ -115,6 +129,7 @@ const promise = loadItems()
 
     .plant{
 
+
         display: flex;
         flex-direction: column;
 
@@ -124,12 +139,32 @@ const promise = loadItems()
             border: 0.5px solid black;
             display: flex;
 
+
             :hover{
                 cursor: pointer !important;
             }
         }
 
-        .row1.indent1{
+        .row1, .plantDetails{
+            background-color: rgb(209, 179, 139);
+        }
+
+        .plantDetails{
+            width: 320px !important;
+            border: 0.5px solid black;
+            border-top: none;
+            display: flex;
+            flex-direction: column;
+
+            p{
+                text-align: justify;
+                margin: 10px;
+            }
+
+
+        }
+
+        .indent1{
             margin-left: 40px;
             width: 280px !important;
         }
@@ -138,6 +173,8 @@ const promise = loadItems()
             display: none;
             flex-direction: column;
         }
+
+
 
 
         .col1{
@@ -150,17 +187,48 @@ const promise = loadItems()
             align-content: center;
             flex-direction: column;
             width: 100%;
+
+            .addRow{
+                height: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 3px;
+
+                input{
+                    width: 100px;
+                }
+            }
         }
 
         h3{
-            margin:  0 0;
+            margin: 0 0;
+            margin-top: 3px;
         }
         p{
             margin: 0;
         }
     }
 
+    /* width */
+    ::-webkit-scrollbar {
+    width: 10px;
+    }
 
+    /* Track */
+    ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    }
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+    background: #888; 
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+    }
 
 
 </style>
