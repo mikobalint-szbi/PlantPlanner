@@ -1,7 +1,6 @@
 <script lang="ts">
 
-import { database } from "$lib/stores/database.js";
-import { loadItems } from "$lib/stores/database.js";
+import { database, loadItems } from "$lib/stores/database.js";
 
 function openPlant(id: string){
 
@@ -12,6 +11,22 @@ function openPlant(id: string){
     plant.style.height = "fit-content"
 
 
+}
+
+function getSubelements(id: string){
+    // @ts-ignore
+    let subelements = []
+    let dbID = id.replace("plant","")
+
+    // @ts-ignore
+    database.subspecies.forEach(subspecie => {
+        if (subspecie.id = dbID){
+            subelements.push(subspecie)
+        }
+
+    });
+    // @ts-ignore
+    return subelements;
 }
 
 
@@ -25,7 +40,8 @@ const promise = loadItems()
     {:then database}
     {#each database.species as element}
 
-    <div class="plant" id="{"plant" + element.id}" on:click={() => openPlant("plant" + element.id)}>
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <div class="plant" id="{"plant" + element.id}" tabindex="0" on:click={() => openPlant("plant" + element.id)} role="button">
 
         <div class="row1">
             <div class="col1">
@@ -38,7 +54,7 @@ const promise = loadItems()
         </div>
 
         <div class="row2">
-            {#each database.subspecies as subelement}
+            {#each getSubelements("plant" + element.id) as subelement}
             <div class="row1 indent1">
 
                 <div class="col1">
