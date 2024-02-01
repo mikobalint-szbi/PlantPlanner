@@ -60,9 +60,9 @@ const promise = loadItems()
     {#each database.species as element}
 
     <!-- svelte-ignore a11y-click-events-have-key-events -->
-    <div class="plant" id="{"plant" + element.id}" tabindex="0" on:click={() => openPlant("plant" + element.id)} role="button">
+    <div class="plant" id="{"plant" + element.id}">
 
-        <div class="row1">
+        <div class="row1 primary" tabindex="0" on:click={() => openPlant("plant" + element.id)} role="button">
             <div class="col1">
                 <div class="imgBox">
                     <img src="{`/Database/IMG/Species/${String(element.id).padStart(2, '0')}.jpg`}" alt="{element.name_hun}">
@@ -161,6 +161,9 @@ const promise = loadItems()
             height: 70px !important;
             display: flex;
 
+        }
+
+        .row1.primary:hover{
             :hover{
                 cursor: pointer !important;
             }
@@ -240,6 +243,9 @@ const promise = loadItems()
                 }
                 button{
                     background-color: rgb(224, 200, 134);
+                    :hover{
+                        cursor: pointer !important;
+                    }
                 }
             }
         }
