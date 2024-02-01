@@ -4,16 +4,30 @@ import { database, loadItems } from "$lib/stores/database.js";
 
 function openPlant(id: string){
 
-    let plant = document.getElementById(id)
-    let row2 = plant.querySelector('.row2');
-    let row1 = plant?.querySelector('.row1')
+    let plant = document.getElementById(id)!
+    let row2 = plant.querySelector('.row2')! as HTMLElement;
+    let row1 = plant.querySelector('.row1')! as HTMLElement;
     let color = "rgb(212, 164, 115)"
+    let color2 = "rgb(234, 192, 150)"
+
+    if (!Array.from(plant.classList).includes("opened")){
+        row2.style.display = "flex";
+        plant.style.height = "fit-content"
+        row1.style.backgroundColor = color
+        row2.style.backgroundColor = color
+        plant.classList.add("opened")
+    }
+    else {
+
+
+        row2.style.display = "none";
+        plant.style.height = "fit-content"
+        row1.style.backgroundColor = color2
+        row2.style.backgroundColor = color2
+        plant.classList.remove("opened")
+    }
     
-    row2.style.display = "flex";
-    plant.style.height = "fit-content"
-    row1.style.backgroundColor = color
-    row2.style.backgroundColor = color
-    row.style.boxShadow = "inset 1px 1px 1px"
+
 
 
 }
@@ -73,7 +87,7 @@ const promise = loadItems()
                     <h3>{subelement.name_hun}</h3>
                     <div class="addRow">
                         <input type="number" value="10">
-                        <button>Letesz</button>
+                        <button>Hozzáad</button>
                     </div>
                     
                 </div>
