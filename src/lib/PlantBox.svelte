@@ -10,16 +10,27 @@ function openPlant(id: string){
     let color = "rgb(212, 164, 115)"
     let color2 = "rgb(234, 192, 150)"
 
+    // Megnyitja, ha zárva van:
     if (!Array.from(plant.classList).includes("opened")){
+        // Először bezárja az összes többi elemet:
+        let toClose = document.getElementById("plantBox")!.querySelectorAll(".plant.opened")
+        
+        toClose.forEach(element => {
+            openPlant(element.id)
+        });
+
+
+        // Majd megnyitja a kiválasztottat:
         row2.style.display = "flex";
         plant.style.height = "fit-content"
         row1.style.backgroundColor = color
         row2.style.backgroundColor = color
         plant.classList.add("opened")
+
+
     }
+    // Bezárja, ha nyitva van:
     else {
-
-
         row2.style.display = "none";
         plant.style.height = "fit-content"
         row1.style.backgroundColor = color2
@@ -54,7 +65,7 @@ const promise = loadItems()
 
 </script>
 
-<div class="plantBox">
+<div class="plantBox" id="plantBox">
 	{#await promise}
     {:then database}
     {#each database.species as element}
@@ -150,7 +161,6 @@ const promise = loadItems()
     }
 
     .plant{
-
 
         display: flex;
         flex-direction: column;
