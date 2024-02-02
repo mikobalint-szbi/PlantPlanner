@@ -4,6 +4,13 @@ export function generator(amount:number, height:number, width:number){
     return plots
 }
 
-export function populateField(plantList:Array){
+export function populateField(plantList:Array<object>){
 
+    while (plantList.length > 1){
+        let chosen:object = plantList[0]
+
+        for(let i = 0; i>plantList.length; i++){
+
+        }
+    }
 }
