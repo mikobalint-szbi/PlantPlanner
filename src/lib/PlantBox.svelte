@@ -243,10 +243,12 @@ const promise = loadItems()
                 }
                 button{
                     background-color: rgb(224, 200, 134);
-                    :hover{
+
+                }
+
+                button:hover{
                         cursor: pointer !important;
                     }
-                }
             }
         }
 
