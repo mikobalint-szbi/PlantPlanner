@@ -73,7 +73,7 @@ const promise = loadItems()
 
     <div class="tabs">
         <div class="tab active" id="tab1">
-            <h3>Hozzáadás</h3>
+            <h3>Összes</h3>
         </div>
         <div class="tab" id="tab2">
             <h3>Hozzáadott</h3>
@@ -81,8 +81,6 @@ const promise = loadItems()
     </div>
     
     <div class="plantBox" id="plantBox">
-    
-    
     
         {#await promise}
         {:then database}
@@ -115,8 +113,8 @@ const promise = loadItems()
                     <div class="col2">
                         <h3>{subelement.name_hun}</h3>
                         <div class="addRow">
-                            <input type="number" value="10">
-                            <button>Hozzáad</button>
+                            <input type="number" value="0">
+                            <!--button>Hozzáad</button-->
                         </div>
                         
                     </div>
@@ -137,6 +135,10 @@ const promise = loadItems()
         {/await}
 
     </div>
+
+    <div class="subButton">
+        <button>Algoritmus futtatása</button>
+    </div>
     
 </div>
 
@@ -147,7 +149,7 @@ const promise = loadItems()
     $subSpeciesColor: rgb(229, 189, 148);
 
     .plantBox{
-        height:90% !important;
+        height:80% !important;
         display: flex;
         flex-direction: column;
         width: fit-content;
@@ -160,10 +162,28 @@ const promise = loadItems()
         height: 100vh !important;
     }
 
+    .subButton{
+        height: 12%;
+        background-color: rgb(229, 189, 148);
+        box-shadow: 0.1px -1px 4px black;
+        position: relative;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        button{
+            background-color: rgb(224, 200, 134);
+            height: 70%;
+            width: 85%;
+            font-size: 22px;
+        }
+    }
+
 
 
     .tabs{
-        height: 50px;
+        height: 8%;
         display: flex;
         flex-direction: row;
         box-shadow: 0.1px 1px 4px black;
@@ -175,8 +195,13 @@ const promise = loadItems()
             width: 50%;
             background-color: rgb(229, 189, 148);;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             h3{
                 text-align: center;
+                display: block;
+                width: fit-content;
             }
         }
 
@@ -293,7 +318,7 @@ const promise = loadItems()
             padding-top: 3px;
 
             h3{
-                font-size: 18px;
+                font-size: 17px;
             }
             p{
                 font-size: 14px;
