@@ -1,6 +1,5 @@
 <script lang="js">
-    import PlantBox from "$lib/PlantBox.svelte";
-    import StatusBox from "$lib/StatusBox.svelte";
+    import SideBar from "$lib/SideBar.svelte";
 
     import { generator, populateField } from "$lib/functions";
 
@@ -25,7 +24,7 @@
 
     <div class="col1">
         <div class="plantBox-parent">
-            <PlantBox/>
+            <SideBar/>
         </div>
 
         <!--div class="separator">
@@ -34,9 +33,6 @@
             </div>
             <div class="s-col2"/>
         </div-->
-        <div class="statusBox-parent">
-            <StatusBox/>
-        </div>
 
     </div>
     <div class="col2">
