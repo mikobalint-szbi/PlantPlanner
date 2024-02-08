@@ -125,13 +125,14 @@ const promise = loadItems()
 <style lang="scss">
 
     $speciesColor: rgb(234, 192, 150);
-    $subSpeciesColor: rgb(224, 185, 145);
+    $subSpeciesColor: rgb(229, 189, 148);
 
     .plantBox{
+
         display: flex;
         flex-direction: column;
         width: fit-content;
-        height: 100vh !important;
+        height: 100%;
         overflow-y: auto;
         overflow-x: hidden;
 
@@ -159,12 +160,17 @@ const promise = loadItems()
         
         }
     }
+    .plant * {
+        z-index: 1;
+    }
 
     .plant{
 
         display: flex;
         flex-direction: column;
-        border: 0.5px solid black;
+        border: 0.5px solid rgb(63, 42, 19);
+        border-right: none;
+        border-left: none;
 
         .row1{
             width: 320px !important;
@@ -273,17 +279,17 @@ const promise = loadItems()
 
     /* width */
     ::-webkit-scrollbar {
-    width: 10px;
+    width: 12px;
     }
 
     /* Track */
     ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
+    background: rgb(238, 222, 205); 
     }
     
     /* Handle */
     ::-webkit-scrollbar-thumb {
-    background: #888; 
+    background: rgb(153, 124, 94); 
     }
 
     /* Handle on hover */

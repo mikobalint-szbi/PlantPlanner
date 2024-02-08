@@ -1,7 +1,8 @@
 <script lang="js">
-    import PlantBox from "../../lib/PlantBox.svelte";
+    import PlantBox from "$lib/PlantBox.svelte";
+    import StatusBox from "$lib/StatusBox.svelte";
 
-    import { generator, populateField } from "$lib/functions.ts";
+    import { generator, populateField } from "$lib/functions";
 
     let inpW = 100
     let inpH = 300
@@ -13,14 +14,26 @@
         {12:Number, 1:Number},
         {16:Number, 5:Number}
     ]
-    populateField(plants)
+    // populateField(plants)
+
 </script>
 
 
 <section class="body">
 
     <div class="col1">
-        <PlantBox/>
+        <div class="plantBox-parent">
+            <PlantBox/>
+        </div>
+
+        <div class="separator">
+            <div class="s-col1"/>
+            <div class="s-col2"/>
+        </div>
+        <div class="statusBox-parent">
+            <StatusBox/>
+        </div>
+
     </div>
     <div class="col2">
         <canvas class="field"/>
@@ -38,11 +51,18 @@
         width: 63vh;
     }
 
+    .plantBox-parent{
+        height: 58.7%;
+    }
+    .statusBox-parent{
+        height: 40%;
+    }
+
     .body{
         display: flex;
         
         .col1{
-
+            height: 100vh;
         }
 
         .col2{
@@ -56,6 +76,28 @@
         }
     }
 
+    .separator{
+        height: 0.1%;
+        z-index: 10 !important;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+
+        .s-col1{
+            width: 320px;
+            border-right: 1px solid black;
+            height: 100%;
+            background-color: rgb(234, 192, 150);
+            background-color: rgb(214, 162, 112);
+            box-shadow:  -1px -1.8px 6px black;
+        }
+        .s-col2{
+            background-color: rgb(97, 88, 78);
+            width: 11px;
+            height: 105%;
+
+        }
+    }
 
 
 
