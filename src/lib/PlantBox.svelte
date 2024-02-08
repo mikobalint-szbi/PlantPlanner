@@ -1,9 +1,16 @@
 <script lang="ts">
 
 import { database, loadItems } from "$lib/stores/database.js";
+    import { json } from "@sveltejs/kit";
+import Layout from "../routes/+layout.svelte";
 
 
 // document.getElementById("plantBox").style.height = `${window.innerHeight - 50}px !important`
+
+sessionStorage.plantsOnField = "[]"
+let plantsOnField:{ amount: number, subspecies: number }[] = []
+let plantsOnField_display:any = []
+
 
 
 function openPlant(id: string){
@@ -63,6 +70,79 @@ function getSubspecies(id: string){
     return subelements;
 }
 
+function openTab1(){
+    document.getElementById("tab1")!.classList.add("active")
+    document.getElementById("tab2")!.classList.remove("active")
+    document.getElementById("plantBox")!.style.display = "flex"
+    document.getElementById("statusBox")!.style.display = "none"
+}
+function openTab2(){
+    document.getElementById("tab2")!.classList.add("active")
+    document.getElementById("tab1")!.classList.remove("active")
+    document.getElementById("statusBox")!.style.display = "flex"
+    document.getElementById("plantBox")!.style.display = "none"
+
+}
+
+function updatePlantAmount(subspeciesID: number, tab2:boolean){
+    let ii = 0;
+    plantsOnField = JSON.parse(sessionStorage.plantsOnField)
+
+
+    let idPrefix;
+    if (tab2)
+        idPrefix = "tab2-subInput"
+    else
+        idPrefix = "subInput"
+
+    if (document.getElementById(idPrefix + subspeciesID)!.value <= 0){
+        document.getElementById(idPrefix + subspeciesID)!.value = 0
+
+
+        while (ii < plantsOnField.length && !(plantsOnField[ii].subspecies == subspeciesID)){
+            ii++;
+        }
+        if (ii < plantsOnField.length){
+            plantsOnField.splice(ii,1)
+            plantsOnField_display.splice(ii,1)
+        }   
+    }
+    else{
+        ii = 0
+        while (ii < plantsOnField.length && !(plantsOnField[ii].subspecies == subspeciesID)){
+            ii++;
+        }
+        if (ii >= plantsOnField.length){
+            plantsOnField.push({"amount":document.getElementById(idPrefix + subspeciesID)!.value,"subspecies":subspeciesID})
+
+            let jj = 0
+            while (jj < database.subspecies.length && !(database.subspecies[jj].id == subspeciesID)){
+                jj++;
+            }
+
+            if (jj < database.subspecies.length){
+                plantsOnField_display.push( database.subspecies[jj])
+            }
+            else{
+                console.log("ÁÁÁÁÁÁÁÁÁ")
+            }
+        }
+        else{
+            plantsOnField[ii] = {"amount":document.getElementById(idPrefix+subspeciesID)!.value,"subspecies":subspeciesID}
+        }
+    }
+
+    sessionStorage.plantsOnField = JSON.stringify(plantsOnField)
+    console.log(sessionStorage.plantsOnField)
+    console.log(plantsOnField)
+    console.log(plantsOnField_display)
+
+    if (tab2){
+        document.getElementById("subInput" + subspeciesID)!.value = document.getElementById("tab2-subInput" + subspeciesID)!.value
+    }
+
+}
+
 
 const promise = loadItems()
 
@@ -72,10 +152,12 @@ const promise = loadItems()
 <div class="sideMenu">
 
     <div class="tabs">
-        <div class="tab active" id="tab1">
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <div class="tab active" id="tab1" on:click={openTab1} role="button" tabindex="0">
             <h3>Összes</h3>
         </div>
-        <div class="tab" id="tab2">
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <div class="tab" id="tab2" role="button" tabindex="0" on:click={openTab2}>
             <h3>Hozzáadott</h3>
         </div>
     </div>
@@ -113,7 +195,7 @@ const promise = loadItems()
                     <div class="col2">
                         <h3>{subelement.name_hun}</h3>
                         <div class="addRow">
-                            <input type="number" value="0">
+                            <input type="number" value="0" id="{"subInput" + subelement.id}" on:change={() => updatePlantAmount(subelement.id, false)}>
                             <!--button>Hozzáad</button-->
                         </div>
                         
@@ -134,6 +216,24 @@ const promise = loadItems()
         {/each}
         {/await}
 
+    </div>
+
+    <div class="statusBox" id="statusBox">
+        {#each plantsOnField as element, i(i)}
+        <div class="plant">
+            <div class="row1 primary">
+                <div class="col1">
+                    <div class="imgBox">
+                        <img src="{`/Database/IMG/Subspecies/${String(plantsOnField_display[i].id).padStart(2, '0')}.jpg`}" alt="{plantsOnField_display[i].name_hun}">
+                    </div>
+                </div>
+                <div class="col2">
+                    <h3>{plantsOnField_display[i].name_hun}</h3>
+                    <input class="tab2-input" type="number" value="{element.amount}" id="{"tab2-subInput" + plantsOnField_display[i].id}" on:change={() => updatePlantAmount(plantsOnField_display[i].id, true)}>
+                </div>
+            </div>
+        </div>
+        {/each}
     </div>
 
     <div class="subButton">
@@ -160,6 +260,18 @@ const promise = loadItems()
     }
     .sideMenu{
         height: 100vh !important;
+    }
+
+    .statusBox{
+        //box-shadow:  -1px -0.8px 6px black;
+        background-color: rgb(214, 162, 112);
+        width: 332px;
+        height:80% !important;
+        z-index: 10;
+        overflow-y: scroll;
+        position: relative;
+        display: none;
+        flex-direction: column;
     }
 
     .subButton{
@@ -323,6 +435,12 @@ const promise = loadItems()
             p{
                 font-size: 14px;
             }
+            .tab2-input{
+                    width: 50px;
+                    background-color: rgb(221, 202, 178);
+                    margin-top: auto;
+                    margin-bottom: auto;
+                }
 
             .addRow{
                 padding-top: 10px;
@@ -335,7 +453,7 @@ const promise = loadItems()
 
 
                 input{
-                    width: 55px;
+                    width: 60px;
                     background-color: rgb(221, 202, 178);
                 }
                 button{
