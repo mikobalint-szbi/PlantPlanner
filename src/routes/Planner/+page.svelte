@@ -1,4 +1,4 @@
-<script lang="js">
+<script lang="ts">
     import PlantBox from "../../lib/PlantBox.svelte";
 
     import { generator, populateField } from "$lib/functions.ts";
@@ -10,8 +10,8 @@
     let Project = generator(inpA, inpH, inpW);
 
     let plants = [
-        {12:Number, 1:Number},
-        {16:Number, 5:Number}
+        {id: 12, amount:1},
+        {id: 16, amount:5}
     ]
     populateField(plants)
 </script>
