@@ -10,7 +10,9 @@ export function populateField(plantList:Array<object>){
         let chosen:object = plantList[0]
 
         for(let i = 0; i>plantList.length; i++){
-
+            
         }
     }
+
+
 }
