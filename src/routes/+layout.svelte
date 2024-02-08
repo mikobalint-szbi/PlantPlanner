@@ -8,5 +8,8 @@
 </div>
 
 <style>
-
+ @import url('https://fonts.googleapis.com/css2?family=Bitter&display=swap');
+    * {
+        font-family: "Bitter";
+    }
 </style>

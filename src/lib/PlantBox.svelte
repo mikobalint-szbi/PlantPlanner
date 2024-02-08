@@ -2,6 +2,10 @@
 
 import { database, loadItems } from "$lib/stores/database.js";
 
+
+// document.getElementById("plantBox").style.height = `${window.innerHeight - 50}px !important`
+
+
 function openPlant(id: string){
 
     let plant = document.getElementById(id)!
@@ -65,60 +69,75 @@ const promise = loadItems()
 
 </script>
 
-<div class="plantBox" id="plantBox">
-	{#await promise}
-    {:then database}
-    {#each database.species as element}
+<div class="sideMenu">
 
-    <!-- svelte-ignore a11y-click-events-have-key-events -->
-    <div class="plant" id="{"plant" + element.id}">
-
-        <div class="row1 primary" tabindex="0" on:click={() => openPlant("plant" + element.id)} role="button">
-            <div class="col1">
-                <div class="imgBox">
-                    <img src="{`/Database/IMG/Species/${String(element.id).padStart(2, '0')}.jpg`}" alt="{element.name_hun}">
-                </div>
-            </div>
-            <div class="col2">
-                <h3>{element.name_hun}</h3>
-                <p>{element.name_lat}</p>
-            </div>
+    <div class="tabs">
+        <div class="tab active" id="tab1">
+            <h3>Hozzáadás</h3>
         </div>
-
-        <div class="row2">
-            {#each getSubspecies("plant" + element.id) as subelement}
-            <div class="row1 indent1 subSpecies">
-
+        <div class="tab" id="tab2">
+            <h3>Hozzáadott</h3>
+        </div>
+    </div>
+    
+    <div class="plantBox" id="plantBox">
+    
+    
+    
+        {#await promise}
+        {:then database}
+        {#each database.species as element}
+    
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <div class="plant" id="{"plant" + element.id}">
+    
+            <div class="row1 primary" tabindex="0" on:click={() => openPlant("plant" + element.id)} role="button">
                 <div class="col1">
                     <div class="imgBox">
-                        <img src="{`/Database/IMG/Subspecies/${String(subelement.id).padStart(2, '0')}.jpg`}" alt="{subelement.name_hun}">
+                        <img src="{`/Database/IMG/Species/${String(element.id).padStart(2, '0')}.jpg`}" alt="{element.name_hun}">
                     </div>
                 </div>
                 <div class="col2">
-                    <h3>{subelement.name_hun}</h3>
-                    <div class="addRow">
-                        <input type="number" value="10">
-                        <button>Hozzáad</button>
-                    </div>
-                    
+                    <h3>{element.name_hun}</h3>
+                    <p>{element.name_lat}</p>
                 </div>
             </div>
-            <div class="plantDetails indent1" style="display: none;">
-                <p>
-                    <!--{subelement.description}-->
-                    Tőtáv: {subelement.plantDistance} cm <br> Sortáv: {subelement.rowDistance} cm
-                </p>
-
-
+    
+            <div class="row2">
+                {#each getSubspecies("plant" + element.id) as subelement}
+                <div class="row1 indent1 subSpecies">
+    
+                    <div class="col1">
+                        <div class="imgBox">
+                            <img src="{`/Database/IMG/Subspecies/${String(subelement.id).padStart(2, '0')}.jpg`}" alt="{subelement.name_hun}">
+                        </div>
+                    </div>
+                    <div class="col2">
+                        <h3>{subelement.name_hun}</h3>
+                        <div class="addRow">
+                            <input type="number" value="10">
+                            <button>Hozzáad</button>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="plantDetails indent1" style="display: none;">
+                    <p>
+                        <!--{subelement.description}-->
+                        Tőtáv: {subelement.plantDistance} cm <br> Sortáv: {subelement.rowDistance} cm
+                    </p>
+    
+    
+                </div>
+                {/each}
             </div>
-            {/each}
         </div>
+    
+        {/each}
+        {/await}
+
     </div>
-
-    {/each}
-    {/await}
-
-
+    
 </div>
 
 
@@ -132,15 +151,37 @@ const promise = loadItems()
         display: flex;
         flex-direction: column;
         width: fit-content;
-        height: 100%;
         overflow-y: auto;
         overflow-x: hidden;
 
         background-color: rgb(231, 205, 148);
     }
+    .sideMenu{
+        height: 100%;
+    }
 
 
 
+    .tabs{
+        height: 50px;
+        display: flex;
+        flex-direction: row;
+        
+        .tab{
+            height: 100%;
+            width: 50%;
+            background-color: rgb(229, 189, 148);;
+
+            h3{
+                text-align: center;
+            }
+        }
+
+        .tab.active{
+            background-color: rgb(195, 139, 87);
+        }
+        
+    }
 
 
     .imgBox{
@@ -242,6 +283,14 @@ const promise = loadItems()
             align-content: center;
             flex-direction: column;
             width: 100%;
+            padding-top: 3px;
+
+            h3{
+                font-size: 18px;
+            }
+            p{
+                font-size: 14px;
+            }
 
             .addRow{
                 padding-top: 10px;

@@ -26,10 +26,12 @@
             <PlantBox/>
         </div>
 
-        <div class="separator">
-            <div class="s-col1"/>
+        <!--div class="separator">
+            <div class="s-col1">
+                <p>^^^</p>
+            </div>
             <div class="s-col2"/>
-        </div>
+        </div-->
         <div class="statusBox-parent">
             <StatusBox/>
         </div>
@@ -52,10 +54,11 @@
     }
 
     .plantBox-parent{
-        height: 58.7%;
+        height: 100vh;
     }
     .statusBox-parent{
         height: 40%;
+        display: none;
     }
 
     .body{
@@ -77,7 +80,7 @@
     }
 
     .separator{
-        height: 0.1%;
+        height: 16px;
         z-index: 10 !important;
         position: relative;
         display: flex;
