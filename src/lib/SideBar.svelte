@@ -227,9 +227,12 @@ const promise = loadItems()
                         <img src="{`/Database/IMG/Subspecies/${String(plantsOnField_display[i].id).padStart(2, '0')}.jpg`}" alt="{plantsOnField_display[i].name_hun}">
                     </div>
                 </div>
-                <div class="col2">
+                <div class="col2 col2-at-tab2">
                     <h3>{plantsOnField_display[i].name_hun}</h3>
                     <input class="tab2-input" type="number" value="{element.amount}" id="{"tab2-subInput" + plantsOnField_display[i].id}" on:change={() => updatePlantAmount(plantsOnField_display[i].id, true)}>
+                </div>
+                <div class="col3-at-tab2">
+                    <div class="color" style="background-color: #{plantsOnField_display[i].color};"/>
                 </div>
             </div>
         </div>
@@ -289,6 +292,7 @@ const promise = loadItems()
             height: 70%;
             width: 85%;
             font-size: 22px;
+            font-family: inherit;
         }
     }
 
@@ -310,6 +314,7 @@ const promise = loadItems()
             display: flex;
             align-items: center;
             justify-content: center;
+            
             h3{
                 text-align: center;
                 display: block;
@@ -428,9 +433,11 @@ const promise = loadItems()
             flex-direction: column;
             width: 100%;
             padding-top: 3px;
+            overflow: hidden;
 
             h3{
                 font-size: 17px;
+                white-space: nowrap;
             }
             p{
                 font-size: 14px;
@@ -475,6 +482,27 @@ const promise = loadItems()
             margin: 0;
         }
     }
+
+    .col2-at-tab2{
+        width: 175px !important;
+    }
+
+    .col3-at-tab2{
+        width: 75px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-right: 2px;
+
+        .color{
+            width: 70%;
+            height: 68%;
+            box-shadow: inset 1px 1px 2px black,
+                        inset -1px -1px 2px black;
+        }
+    }
+
+
 
     /* width */
     ::-webkit-scrollbar {
