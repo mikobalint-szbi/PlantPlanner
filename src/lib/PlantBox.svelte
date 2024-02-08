@@ -147,7 +147,7 @@ const promise = loadItems()
     $subSpeciesColor: rgb(229, 189, 148);
 
     .plantBox{
-
+        height:90% !important;
         display: flex;
         flex-direction: column;
         width: fit-content;
@@ -157,7 +157,7 @@ const promise = loadItems()
         background-color: rgb(231, 205, 148);
     }
     .sideMenu{
-        height: 100%;
+        height: 100vh !important;
     }
 
 
@@ -166,19 +166,26 @@ const promise = loadItems()
         height: 50px;
         display: flex;
         flex-direction: row;
+        box-shadow: 0.1px 1px 4px black;
+        position: relative;
+        z-index: 30;
         
         .tab{
             height: 100%;
             width: 50%;
             background-color: rgb(229, 189, 148);;
-
+            cursor: pointer;
             h3{
                 text-align: center;
             }
         }
 
         .tab.active{
-            background-color: rgb(195, 139, 87);
+            background-color: rgb(200, 141, 85);
+            cursor: default;
+        }
+        #tab1{
+            border-right: 1px solid black;
         }
         
     }
