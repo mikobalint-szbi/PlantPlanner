@@ -10,4 +10,4 @@ let plants = [
     {12:Number, 1:Number},
     {16:Number, 5:Number}
 ]
-populateField(plants)
+//populateField(plants)

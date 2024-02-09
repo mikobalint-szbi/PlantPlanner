@@ -6,13 +6,13 @@ export function generator(amount:number, height:number, width:number){
 
 export function populateField(plantList:Array<object>){
 
-    while (plantList.length > 1){
+ /*   while (plantList.length > 1){
         let chosen:object = plantList[0]
 
         for(let i = 0; i>plantList.length; i++){
             delete plantList[0]
         }
-    }
+    }*/
 
 
 }
