@@ -294,9 +294,9 @@ const promise = loadItems()
             font-size: 22px;
             font-family: inherit;
             
-            :hover{
-                font-family: inherit;
-            }
+        }
+        button:hover{
+            background-color: rgb(211, 158, 78);
         }
     }
 
