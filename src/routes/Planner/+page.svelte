@@ -10,8 +10,8 @@
     let Project = generator(inpA, inpH, inpW);
 
     let plants = [
-        {12:Number, 1:Number},
-        {16:Number, 5:Number}
+        {id: 12, amount:1},
+        {id: 16, amount:5}
     ]
 
     let plansOnField = []
