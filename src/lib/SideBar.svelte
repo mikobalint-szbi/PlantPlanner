@@ -293,6 +293,10 @@ const promise = loadItems()
             width: 85%;
             font-size: 22px;
             font-family: inherit;
+            
+            :hover{
+                font-family: inherit;
+            }
         }
     }
 
