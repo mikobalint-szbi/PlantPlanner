@@ -58,6 +58,7 @@
 
     .body{
         display: flex;
+        background-color: rgb(255, 232, 201);
         
         .col1{
             height: 100vh;
