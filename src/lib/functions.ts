@@ -1,8 +1,9 @@
 import { database, loadItems } from "$lib/stores/database.js";
 
+
 export interface PlantInput{
         id:number
-        ammount:number
+        amount:number
 }
 
 export function generator(amount:number, height:number, width:number){
@@ -11,8 +12,8 @@ export function generator(amount:number, height:number, width:number){
     return plots
 }
 
-export function populateField(plantList:Array<PlantInput>){
-    let temparr = []
+export function populateField(){
+    let plantList:PlantInput[] = sessionStorage.plantsOnField
     while (plantList.length > 1){
         let chosen:PlantInput = plantList[0]
         /*database.subspecies.forEach(subspecie => {

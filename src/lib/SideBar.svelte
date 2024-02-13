@@ -3,12 +3,14 @@
 import { database, loadItems } from "$lib/stores/database.js";
     import { json } from "@sveltejs/kit";
 import Layout from "../routes/+layout.svelte";
-
+    import type { PlantInput } from "./functions";
+    import { generator, populateField, } from "./functions";
+    
 
 // document.getElementById("plantBox").style.height = `${window.innerHeight - 50}px !important`
 
 sessionStorage.plantsOnField = "[]"
-let plantsOnField:{ amount: number, subspecies: number }[] = []
+let plantsOnField:PlantInput[] = []
 let plantsOnField_display:any = []
 
 
@@ -99,7 +101,7 @@ function updatePlantAmount(subspeciesID: number, tab2:boolean){
         document.getElementById(idPrefix + subspeciesID)!.value = 0
 
 
-        while (ii < plantsOnField.length && !(plantsOnField[ii].subspecies == subspeciesID)){
+        while (ii < plantsOnField.length && !(plantsOnField[ii].id == subspeciesID)){
             ii++;
         }
         if (ii < plantsOnField.length){
@@ -109,11 +111,11 @@ function updatePlantAmount(subspeciesID: number, tab2:boolean){
     }
     else{
         ii = 0
-        while (ii < plantsOnField.length && !(plantsOnField[ii].subspecies == subspeciesID)){
+        while (ii < plantsOnField.length && !(plantsOnField[ii].id == subspeciesID)){
             ii++;
         }
         if (ii >= plantsOnField.length){
-            plantsOnField.push({"amount":document.getElementById(idPrefix + subspeciesID)!.value,"subspecies":subspeciesID})
+            plantsOnField.push({"amount":document.getElementById(idPrefix + subspeciesID)!.value,"id":subspeciesID})
 
             let jj = 0
             while (jj < database.subspecies.length && !(database.subspecies[jj].id == subspeciesID)){
@@ -128,14 +130,13 @@ function updatePlantAmount(subspeciesID: number, tab2:boolean){
             }
         }
         else{
-            plantsOnField[ii] = {"amount":document.getElementById(idPrefix+subspeciesID)!.value,"subspecies":subspeciesID}
+            plantsOnField[ii] = {"amount":document.getElementById(idPrefix+subspeciesID)!.value,"id":subspeciesID}
         }
     }
 
     sessionStorage.plantsOnField = JSON.stringify(plantsOnField)
-    console.log(sessionStorage.plantsOnField)
-    console.log(plantsOnField)
-    console.log(plantsOnField_display)
+    
+
 
     if (tab2){
         document.getElementById("subInput" + subspeciesID)!.value = document.getElementById("tab2-subInput" + subspeciesID)!.value
@@ -240,7 +241,7 @@ const promise = loadItems()
     </div>
 
     <div class="subButton">
-        <button>Algoritmus futtatása</button>
+        <button on:click={populateField}>Algoritmus futtatása</button>
     </div>
     
 </div>

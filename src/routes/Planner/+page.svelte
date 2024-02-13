@@ -5,17 +5,14 @@
     import type { PlantInput, } from "$lib/functions.ts";
 
 
+
     let inpW = 100
-let inpH = 300
-let inpA = 3
+    let inpH = 300
+    let inpA = 3
 
-let Project = generator(inpA, inpH, inpW);
+    let Project = generator(inpA, inpH, inpW);
 
-const plants:PlantInput[]  = [
-    {id:12, ammount:1},
-    {id:16, ammount:5}
-]
-    //populateField(plants)
+
 
 </script>
 
