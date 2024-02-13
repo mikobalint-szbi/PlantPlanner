@@ -21,7 +21,7 @@ export function populateField(){
     let lrd=0
     while (plantList.length > 1){
         let chosen:PlantInput = plantList[0]
-        database.subspecies.forEach(subspecie => {
+        /*database.subspecies.forEach(subspecie => {
             if (subspecie.id == chosen.id){
                 
                 database.like.forEach(pref =>{
@@ -138,11 +138,12 @@ export function populateField(){
                                 for (let i =0;i>plantList.length;i++){
                                     database.subspecies.forEach(ssspecies=>{
                                         if (ssspecies.id == plantList[i].id){
-                                        tempsecondplant = ssspecies.speciesID
-                                    }
-                                })
+                                            tempsecondplant = ssspecies.speciesID
+                                        }
+                                    })
                                 }
                             }
+                        }
                     }
                 })
             }
@@ -150,7 +151,7 @@ export function populateField(){
                 prevPD=subspecie.plantDistance
             }
             
-        });
+        });*/
         
         for(let i = 0; i>plantList.length; i++){
             delete plantList[0]
