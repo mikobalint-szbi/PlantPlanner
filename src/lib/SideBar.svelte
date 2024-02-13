@@ -526,7 +526,7 @@ const promise = loadItems()
 
     /* Handle on hover */
     ::-webkit-scrollbar-thumb:hover {
-    background: rgb(109, 89, 67); 
+    background: rgb(120, 97, 76); 
     }
 
 

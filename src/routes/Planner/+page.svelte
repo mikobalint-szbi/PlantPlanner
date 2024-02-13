@@ -6,11 +6,7 @@
 
 
 
-    let inpW = 100
-    let inpH = 300
-    let inpA = 3
 
-    let Project = generator(inpA, inpH, inpW);
 
 
 
