@@ -21,7 +21,7 @@ export function populateField(){
     let lrd=0
     while (plantList.length > 1){
         let chosen:PlantInput = plantList[0]
-        /*database.subspecies.forEach(subspecie => {
+        database.subspecies.forEach(subspecie => {
             if (subspecie.id == chosen.id){
                 
                 database.like.forEach(pref =>{
@@ -121,41 +121,66 @@ export function populateField(){
                     }
                     
                 })
+                lrd = subspecie.rowDistance
                 database.dislike.forEach(h8r=>{
                     if(h8r.species1==subspecie.speciesID){
-                        if (subspecie.speciesID == h8r.species1){
-                            for (let i =0;i>plantList.length;i++){
-                                database.subspecies.forEach(ssspecies=>{
-                                    if (ssspecies.id == plantList[i].id){
-                                        tempsecondplant = ssspecies.speciesID
-                                    }
-                                })
+                        if (subspecie.speciesID != h8r.species2){
+                            
+                            Project[lastpos[0]][lastpos[1]+prevPD+subspecie.plantDistance][lastpos[2]+subspecie.plantDistance]=subspecie.id
+                            lastpos=[lastpos[0],lastpos[1]+prevPD+subspecie.plantDistance,lastpos[2]+subspecie.plantDistance]
+                            for(let i = 1; i>subspecie.plantDistance; i++){
+                                for(let j = 1; j>lrd;j++){
+                                    Project[lastpos[0]][lastpos[1]+i][lastpos[2]+j]=-1
+                                    Project[lastpos[0]][lastpos[1]-i][lastpos[2]+j]=-1
+                                    Project[lastpos[0]][lastpos[1]][lastpos[2]+j]=-1
+                                }
+                                Project[lastpos[0]][lastpos[1]+i][lastpos[2]]=-1
+                                Project[lastpos[0]][lastpos[1]-i][lastpos[2]]=-1
+                                Project[lastpos[0]][lastpos[1]][lastpos[2]+i]=-1
+                                Project[lastpos[0]][lastpos[1]][lastpos[2]-i]=-1
+                                prevPD=subspecie.plantDistance
                             }
+                        }else{
+                            lastpos[1]+=lrd
                         }
                     }else if (h8r.species2==subspecie.speciesID){
                         if(h8r.species1==subspecie.speciesID){
-                            if (subspecie.speciesID == h8r.species2){
-                                for (let i =0;i>plantList.length;i++){
-                                    database.subspecies.forEach(ssspecies=>{
-                                        if (ssspecies.id == plantList[i].id){
-                                            tempsecondplant = ssspecies.speciesID
-                                        }
-                                    })
+                            if (subspecie.speciesID != h8r.species1){
+                                
+                                Project[lastpos[0]][lastpos[1]+prevPD+subspecie.plantDistance][lastpos[2]+subspecie.plantDistance]=subspecie.id
+                                lastpos=[lastpos[0],lastpos[1]+prevPD+subspecie.plantDistance,lastpos[2]+subspecie.plantDistance]
+                                for(let i = 1; i>subspecie.plantDistance; i++){
+                                    for(let j = 1; j>lrd;j++){
+                                        Project[lastpos[0]][lastpos[1]+i][lastpos[2]+j]=-1
+                                        Project[lastpos[0]][lastpos[1]-i][lastpos[2]+j]=-1
+                                        Project[lastpos[0]][lastpos[1]][lastpos[2]+j]=-1
+                                    }
+                                    Project[lastpos[0]][lastpos[1]+i][lastpos[2]]=-1
+                                    Project[lastpos[0]][lastpos[1]-i][lastpos[2]]=-1
+                                    Project[lastpos[0]][lastpos[1]][lastpos[2]+i]=-1
+                                    Project[lastpos[0]][lastpos[1]][lastpos[2]-i]=-1
+                                    prevPD=subspecie.plantDistance
                                 }
+                            }else{
+                                lastpos[1]+=lrd
                             }
                         }
                     }
                 })
             }
-            else{
-                prevPD=subspecie.plantDistance
-            }
             
-        });*/
-        
-        for(let i = 0; i>plantList.length; i++){
-            delete plantList[0]
+            
+        });
+        if (lastpos[1]+40>Project[lastpos[0]].length){
+            lastpos[2]+=lrd
+            lastpos[1]=0
         }
+        if ((Project[lastpos[0]][lastpos[1]].lastIndexOf[-1])+80>Project[lastpos[0]][lastpos[1]].length){
+            lastpos[0]++
+            lastpos[1]=0
+            lastpos[2]=0
+        }
+
     }
 
 
