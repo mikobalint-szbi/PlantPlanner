@@ -2,12 +2,13 @@
     import { onMount } from 'svelte';
 
     onMount(() => {
-        document.body.classList.add("newPage-body");
+        document.body.classList.add("newProject-body");
     });
 
 </script>
 
-<body>
+    <svelte:body class="newProject-body"/>
+<div class="body">
     <div class="mainBox">
         <h1>Projekt létrehozása</h1>
         <label for="name">Projekt neve: </label> <input type="text" id="name">
@@ -16,7 +17,7 @@
         <label for="height">Ágyások hosszúsága: </label> <input type="number" id="height">
         <button>Létrehozás</button>
     </div>
-</body>
+</div>
 
 
 
@@ -24,21 +25,21 @@
 
 <style>
 
-    :global(body){
-        height: 100vh;
-    }
-
     .app{
         height: 100vh;
     }
 
-    body{
+    :global(.newProject-body){
+        background-color: rgb(245, 206, 167);
+    }
+
+    .body{
         display: flex;
         padding-top: 15vh;
         justify-content: center;
         height: 100%;
         width: 100%;
-        background-color: rgb(238, 222, 205);
+
     }
 
     .mainBox{
@@ -47,7 +48,9 @@
         width: 250px;
         height: fit-content;
         padding: 20px;
-        border: solid black 1px;
+        border: solid rgb(97, 79, 71) 1px;
+        border-radius: 2px;
+        background-color: rgb(236, 194, 149);
 
     }
 
