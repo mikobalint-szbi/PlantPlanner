@@ -8,8 +8,11 @@ export const loadItems = async () => {
   database = await response.text();
 
   try {
-    database = JSON.parse(database);
-    saveDatabase();
+    if (true){
+      database = JSON.parse(database);
+      saveDatabase();
+    }
+
   }
   catch (error) {
     console.error('Error parsing JSON:', error);

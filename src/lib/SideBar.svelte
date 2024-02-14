@@ -196,7 +196,7 @@ const promise = loadItems()
                     <div class="col2">
                         <h3>{subelement.name_hun}</h3>
                         <div class="addRow">
-                            <input type="number" value="0" id="{"subInput" + subelement.id}" on:change={() => updatePlantAmount(subelement.id, false)}>
+                            <input type="number" value="0" min="0" id="{"subInput" + subelement.id}" on:change={() => updatePlantAmount(subelement.id, false)}>
                             <!--button>Hozzáad</button-->
                         </div>
                         
@@ -230,7 +230,7 @@ const promise = loadItems()
                 </div>
                 <div class="col2 col2-at-tab2">
                     <h3>{plantsOnField_display[i].name_hun}</h3>
-                    <input class="tab2-input" type="number" value="{element.amount}" id="{"tab2-subInput" + plantsOnField_display[i].id}" on:change={() => updatePlantAmount(plantsOnField_display[i].id, true)}>
+                    <input class="tab2-input" type="number" min="0" value="{element.amount}" id="{"tab2-subInput" + plantsOnField_display[i].id}" on:change={() => updatePlantAmount(plantsOnField_display[i].id, true)}>
                 </div>
                 <div class="col3-at-tab2">
                     <div class="color" style="background-color: #{plantsOnField_display[i].color};"/>
@@ -521,12 +521,12 @@ const promise = loadItems()
     
     /* Handle */
     ::-webkit-scrollbar-thumb {
-    background: rgb(153, 124, 94); 
+    background: rgb(153, 124, 94);
     }
 
     /* Handle on hover */
     ::-webkit-scrollbar-thumb:hover {
-    background: rgb(120, 97, 76); 
+    background: rgb(120, 97, 76);
     }
 
 

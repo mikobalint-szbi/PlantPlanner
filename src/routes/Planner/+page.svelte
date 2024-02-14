@@ -5,8 +5,25 @@
     import type { PlantInput, } from "$lib/functions.ts";
 
 
+    function initializeProject(amount:number, height:number, width:number){
+        let fieldContainer:any = document.getElementById("fieldContainer")!
+        fieldContainer.innerHTML = "";
 
+        for (let i = 0; i<amount; i++){
+            fieldContainer.innerHTML += `<canvas class="field" id="canvas${i}" width="${width}" height="${height}"/>`
+        }
 
+    }
+
+    if (sessionStorage.newProject){
+
+        let newProject = JSON.parse(sessionStorage.newProject)
+
+        initializeProject(newProject.amount, newProject.height, newProject.width)
+    }
+    else{
+        console.log("ERRR")
+    }
 
 
 
@@ -28,11 +45,8 @@
         </div-->
 
     </div>
-    <div class="col2">
-        <canvas class="field"/>
-        <canvas class="field"/>
-        <canvas class="field"/>
-        <canvas class="field"/>
+    <div class="col2" id="fieldContainer">
+
     </div>
 
 </section>
