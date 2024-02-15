@@ -14,7 +14,7 @@ export function generator(amount:number, height:number, width:number){
 }
 
 export function populateField(){
-    let plantList:PlantInput[] = sessionStorage.plantsOnField
+    let plantList:PlantInput[] = localStorage.plantsOnField
     let lastpos = [0,0,0]
     let prevPD=0;
     let tempsecondplant

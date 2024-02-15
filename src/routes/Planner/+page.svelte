@@ -1,29 +1,48 @@
 <script lang="ts">
+
     import SideBar from "$lib/SideBar.svelte";
 
     import { generator, populateField, } from "$lib/functions";
     import type { PlantInput, } from "$lib/functions.ts";
+    import {onMount} from "svelte";
 
+    let project;
 
     function initializeProject(amount:number, height:number, width:number){
         let fieldContainer:any = document.getElementById("fieldContainer")!
         fieldContainer.innerHTML = "";
 
+        project = generator(amount, height, width)
+        console.log(project, amount, height, width)
+
+        if (height > width){
+            let temp:number = height;
+            height = width;
+            width = temp;
+        }
+
+        width = (height / width) * 80
+        height = 80
+
         for (let i = 0; i<amount; i++){
-            fieldContainer.innerHTML += `<canvas class="field" id="canvas${i}" width="${width}" height="${height}"/>`
+            fieldContainer.innerHTML += `<canvas class="field" id="canvas${i}" style="height: ${height}vh; width:${width}vh"/>`
         }
 
     }
 
-    if (sessionStorage.newProject){
+    onMount(() => {
+        if (localStorage.newProject){
 
-        let newProject = JSON.parse(sessionStorage.newProject)
+            let newProject = JSON.parse(localStorage.newProject)
 
-        initializeProject(newProject.amount, newProject.height, newProject.width)
-    }
-    else{
-        console.log("ERRR")
-    }
+            initializeProject(newProject.amount, newProject.height, newProject.width)
+        }
+        else{
+            console.log("ERRR")
+        }
+    })
+
+
 
 
 
@@ -49,13 +68,15 @@
 
     </div>
 
+
 </section>
 
 <style lang="scss">
-    .field{
+    :global(.field){
         border: 1px solid black;
-        height: 80vh;
-        width: 63vh;
+        //height: 80vh;
+        
+        background-color: rgb(255, 255, 255);
     }
 
     .plantBox-parent{
