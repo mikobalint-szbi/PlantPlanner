@@ -241,7 +241,7 @@ const promise = loadItems()
     </div>
 
     <div class="subButton">
-        <button on:click={populateField}>Algoritmus futtatása</button>
+        <button >Algoritmus futtatása</button>
     </div>
     
 </div>
