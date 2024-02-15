@@ -8,9 +8,26 @@ export interface PlantInput{
 }
 
 export function generator(amount:number, height:number, width:number){
+    let width_ = new Array()
 
-    let plots =Array(amount).fill(Array(height).fill(Array(width).fill(0)))
-    return plots
+    for (let i = 0; i < width; i++){
+        width_.push(0)
+    }
+
+    let height_ = new Array()
+
+    for (let i = 0; i < height; i++){
+        height_.push([...width_])
+    }
+
+    let amount_ = new Array()
+    
+    for (let i = 0; i < amount; i++){
+        amount_.push([...height_])
+    }
+
+
+    return amount_
 }
 
 export function populateField(){
