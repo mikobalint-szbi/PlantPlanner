@@ -9,7 +9,7 @@ export interface PlantInput{
 
 export function generator(amount:number, height:number, width:number){
 
-    let plots =Array(amount).fill(Array(height).fill(new Array(width).fill(0)))
+    let plots =Array(amount).fill(new Array(height).fill(new Array(width).fill(0)))
     return plots
 }
 
@@ -179,6 +179,9 @@ export function populateField(){
             lastpos[0]++
             lastpos[1]=0
             lastpos[2]=0
+        }
+        for (let i = 0; i<plantList.length;i++){
+            if(plantList[i].amount<=0) plantList.splice(i)
         }
 
     }
