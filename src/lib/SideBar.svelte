@@ -9,7 +9,7 @@ import Layout from "../routes/+layout.svelte";
 
 // document.getElementById("plantBox").style.height = `${window.innerHeight - 50}px !important`
 
-sessionStorage.plantsOnField = "[]"
+localStorage.plantsOnField = "[]"
 let plantsOnField:PlantInput[] = []
 let plantsOnField_display:any = []
 
@@ -88,7 +88,7 @@ function openTab2(){
 
 function updatePlantAmount(subspeciesID: number, tab2:boolean){
     let ii = 0;
-    plantsOnField = JSON.parse(sessionStorage.plantsOnField)
+    plantsOnField = JSON.parse(localStorage.plantsOnField)
 
 
     let idPrefix;
@@ -134,7 +134,7 @@ function updatePlantAmount(subspeciesID: number, tab2:boolean){
         }
     }
 
-    sessionStorage.plantsOnField = JSON.stringify(plantsOnField)
+    localStorage.plantsOnField = JSON.stringify(plantsOnField)
     
 
 

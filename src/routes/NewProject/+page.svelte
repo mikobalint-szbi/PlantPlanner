@@ -30,13 +30,12 @@
                 height: height,
             }
 
-            sessionStorage.newProject = JSON.stringify(stor)
+            localStorage.newProject = JSON.stringify(stor)
             console.log(stor)
             window.location.href = "./Planner"
 
 
         }
-
 
 
 
