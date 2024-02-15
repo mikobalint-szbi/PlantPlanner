@@ -1,5 +1,5 @@
 <script>
-
+	window.location.href = "./NewProject"
 </script>
 
 <svelte:head>
