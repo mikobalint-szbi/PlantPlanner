@@ -14,7 +14,7 @@
         let height:number = document.getElementById("height")!.value
         let error = document.getElementById("error")
             
-        if (!(name.length > 1)){
+        if (!(name.length >= 1)){
             error!.innerText = 'A "Projekt neve" mező nem maradhat üresen'
         }
         else if (!(amount >= 1)){

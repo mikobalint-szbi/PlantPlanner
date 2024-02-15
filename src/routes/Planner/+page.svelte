@@ -13,7 +13,6 @@
         fieldContainer.innerHTML = "";
 
         project = generator(amount, height, width)
-        console.log(project, amount, height, width)
 
         if (height > width){
             let temp:number = height;
@@ -30,12 +29,17 @@
 
     }
 
+    function displayPlants(){
+        console.log("s",document.getElementById("field0")!.height)
+    }
+
     onMount(() => {
         if (localStorage.newProject){
 
             let newProject = JSON.parse(localStorage.newProject)
 
             initializeProject(newProject.amount, newProject.height, newProject.width)
+            displayPlants()
         }
         else{
             console.log("ERRR")
@@ -98,11 +102,14 @@
         .col2{
             display: flex;
             align-items: center;
+            justify-content: center;
+            margin: auto;
             flex-wrap: nowrap;
             white-space: nowrap;
             overflow-x: auto;
             gap: 10px;
             padding: 0 20px 0 20px;
+            height: 100vh;
         }
     }
 
